@@ -4,3 +4,8 @@
 
 (defn -main [& args]
   (apply demo.web/-main args))
+
+(comment
+
+  (-main)
+  )

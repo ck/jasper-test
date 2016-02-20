@@ -8,7 +8,14 @@
                  [org.immutant/immutant "2.1.2"]
                  [compojure "1.4.0"]
                  [ring/ring-devel "1.4.0"]
-                 [environ "1.0.1"]]
+                 [environ "1.0.1"]
+                 ;; DynamicReports
+                 [org.apache.poi/poi "3.13"]
+                 [net.sf.jasperreports/jasperreports "6.2.0"]
+                 [net.sf.jasperreports/jasperreports-fonts "6.2.0"]
+                 [net.sourceforge.dynamicreports/dynamicreports-core "4.1.0"]
+                 [net.sourceforge.dynamicreports/dynamicreports-adhoc "4.1.0"]]
+
   :repositories [["Immutant incremental builds"
                   "http://downloads.immutant.org/incremental/"]]
 

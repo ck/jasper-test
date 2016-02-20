@@ -8,7 +8,8 @@
             [compojure.core     :refer (ANY GET defroutes)]
             [ring.util.response :refer (response redirect content-type)]
             [clojure.pprint     :refer (pprint)]
-            [environ.core       :refer (env)]))
+            [environ.core       :refer (env)]
+            [demo.report]))
 
 (defn echo
   "Echos the request back as a string."
@@ -37,6 +38,14 @@
      :on-close   (fn [channel {:keys [code reason]}]
                    (println "close code:" code "reason:" reason))}))
 
+(defn generate-report
+  "Echos the request back as a string."
+  [request]
+  (print "Generating report ... ")
+  (demo.report/generate)
+  (println "Done.")
+  (-> (response "OK")
+      (content-type "text/plain")))
 
 (defroutes routes
   (GET "/" {c :context} (redirect (str c "/index.html")))
@@ -44,6 +53,7 @@
   (GET "/reverser" [] reverser)
   (GET "/sse"      [] sse/countdown)
   (GET "/http-kit" [] hk/async-handler)
+  (GET "/report"   [] generate-report)
   (route/resources "/")
   (ANY "*" [] echo))
 
